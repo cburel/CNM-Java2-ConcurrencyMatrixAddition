@@ -6,6 +6,8 @@ starting place. It should be modified.
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -43,6 +45,13 @@ public class Main {
 
         // instantiate four ThreadOperation objects. feed in 3 matrices and a quadrant
         // indicator.
+
+        ArrayList<ThreadOperation> operations = new ArrayList<ThreadOperation>();
+        operations.addAll(Arrays.asList(
+                new ThreadOperation(null, null, null, 0),
+                new ThreadOperation(null, null, null, 0),
+                new ThreadOperation(null, null, null, 0),
+                new ThreadOperation(null, null, null, 0)));
 
         // start all threads and join them
 
