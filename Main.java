@@ -34,8 +34,11 @@ public class Main {
             int rows = Integer.parseInt(data[0].trim());
             int cols = Integer.parseInt(data[1].trim());
 
-            // read the matrix from the file
-            int[][] matrix = readInMatrix(rows, cols, inFile);
+            // read the first matrix from the file
+            int[][] matrixA = readInMatrix(rows, cols, inFile);
+
+            // read the second matrix from the file
+            int[][] matrixB = readInMatrix(rows, cols, inFile);
 
             // create empty result matrix
             int[][] result = new int[rows][cols];
@@ -46,7 +49,7 @@ public class Main {
 
             // start the threads
             for (int i = 0; i < quadrants.length; i++) {
-                ThreadOperation task = new ThreadOperation(matrix, matrix, result, quadrants[i]);
+                ThreadOperation task = new ThreadOperation(matrixA, matrixB, result, quadrants[i]);
                 threads[i] = new Thread(task);
                 threads[i].start();
             }
@@ -62,7 +65,7 @@ public class Main {
             }
 
             // output
-            print2dArray(matrix);
+            print2dArray(result);
         }
     }
 
@@ -70,10 +73,12 @@ public class Main {
         int[][] toReturn = new int[rows][columns];
 
         // insert each value into its respective spot in the array
-        while (inFile.hasNext()) {
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < columns; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (inFile.hasNextInt()) {
                     toReturn[i][j] = inFile.nextInt();
+                } else {
+                    System.out.println("Ran out of numbersat row " + i + ", col " + j);
                 }
             }
         }
