@@ -64,11 +64,19 @@ public class Main {
                 }
             }
 
-            // output
+            // output the resulting matrix to the console
             print2dArray(result);
         }
     }
 
+    /**
+     * Reads in a matrix from a file.
+     * 
+     * @param rows    The number of rows in the matrix
+     * @param columns The number of columns in the matrix
+     * @param inFile  The scanner reading in the matrix from a given file
+     * @return The matrix from the file
+     */
     public static int[][] readInMatrix(int rows, int columns, Scanner inFile) {
         int[][] toReturn = new int[rows][columns];
 
@@ -78,7 +86,7 @@ public class Main {
                 if (inFile.hasNextInt()) {
                     toReturn[i][j] = inFile.nextInt();
                 } else {
-                    System.out.println("Ran out of numbersat row " + i + ", col " + j);
+                    System.out.println("Ran out of numbers at row " + i + ", col " + j);
                 }
             }
         }
@@ -86,6 +94,11 @@ public class Main {
         return toReturn;
     }
 
+    /**
+     * Prints a given matrix to the console
+     * 
+     * @param matrix The matrix to print to the console
+     */
     public static void print2dArray(int[][] matrix) {
 
         // use sysout.printf to print matrix with rows and cols aligned
