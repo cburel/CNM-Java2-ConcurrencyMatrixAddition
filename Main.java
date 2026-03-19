@@ -58,7 +58,18 @@ public class Main {
                 }
             }
 
+            // print the first array
+            System.out.println("Matrix A:");
+            print2dArray(matrixA);
+
+            // print the second array
+            System.out.println();
+            System.out.println("Matrix B:");
+            print2dArray(matrixB);
+
             // output the resulting matrix to the console
+            System.out.println();
+            System.out.println("Sum of matrix A and matrix B:");
             print2dArray(result);
         }
     }
