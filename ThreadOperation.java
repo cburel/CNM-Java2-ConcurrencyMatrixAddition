@@ -1,6 +1,6 @@
 public class ThreadOperation extends Thread {
 
-    int[][] arr1, arr2, arr3;
+    int[][] matrixA, matrixB, result;
     Quadrant quadrant;
 
     /**
@@ -16,16 +16,16 @@ public class ThreadOperation extends Thread {
     /**
      * Constructor
      * 
-     * @param arr1     The first matrix
-     * @param arr2     The second matrix
-     * @param arr3     The resulting matrix
+     * @param matrixA  The first matrix
+     * @param matrixB  The second matrix
+     * @param result   The resulting matrix
      * @param quadrant The quadrant as determined by splitting the matrices into 4
      *                 parts
      */
-    ThreadOperation(int[][] arr1, int[][] arr2, int[][] arr3, Quadrant quadrant) {
-        this.arr1 = arr1;
-        this.arr2 = arr2;
-        this.arr3 = arr3;
+    ThreadOperation(int[][] matrixA, int[][] matrixB, int[][] result, Quadrant quadrant) {
+        this.matrixA = matrixA;
+        this.matrixB = matrixB;
+        this.result = result;
         this.quadrant = quadrant;
     }
 
@@ -83,7 +83,7 @@ public class ThreadOperation extends Thread {
     @Override
     public void run() {
 
-        int[] bounds = getQuadrantIndexes(arr1.length, arr1[0].length, this.quadrant);
+        int[] bounds = getQuadrantIndexes(matrixA.length, matrixA[0].length, this.quadrant);
 
         // assigned indexes are: {start of row, end of row, start of col, end of col}
         int startRow = bounds[0];
@@ -94,7 +94,7 @@ public class ThreadOperation extends Thread {
         // add the matrix quadrants
         for (int i = startRow; i <= endRow; i++) {
             for (int j = startCol; j <= endCol; j++) {
-                arr3[i][j] = arr1[i][j] + arr2[i][j];
+                result[i][j] = matrixA[i][j] + matrixB[i][j];
             }
         }
 

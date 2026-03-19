@@ -66,17 +66,17 @@ public class Main {
     /**
      * Reads in a matrix from a file.
      * 
-     * @param rows    The number of rows in the matrix
-     * @param columns The number of columns in the matrix
-     * @param inFile  The scanner reading in the matrix from a given file
+     * @param rows   The number of rows in the matrix
+     * @param cols   The number of columns in the matrix
+     * @param inFile The scanner reading in the matrix from a given file
      * @return The matrix from the file
      */
-    public static int[][] readInMatrix(int rows, int columns, Scanner inFile) {
-        int[][] toReturn = new int[rows][columns];
+    public static int[][] readInMatrix(int rows, int cols, Scanner inFile) {
+        int[][] toReturn = new int[rows][cols];
 
         // insert each value into its respective spot in the array
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
+            for (int j = 0; j < cols; j++) {
                 if (inFile.hasNextInt()) {
                     toReturn[i][j] = inFile.nextInt();
                 } else {
