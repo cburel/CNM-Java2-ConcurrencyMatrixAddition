@@ -24,15 +24,9 @@ public class Main {
         // if inFile has a line
         if (inFile.hasNext()) {
 
-            // read first line as a string
-            String firstLine = inFile.nextLine();
-
-            // split the first line
-            String[] data = firstLine.split(" ");
-
-            // insert row and col values into their respective variables
-            int rows = Integer.parseInt(data[0].trim());
-            int cols = Integer.parseInt(data[1].trim());
+            // get number of rows and columns from the first line of the file
+            int rows = inFile.nextInt();
+            int cols = inFile.nextInt();
 
             // read the first matrix from the file
             int[][] matrixA = readInMatrix(rows, cols, inFile);
